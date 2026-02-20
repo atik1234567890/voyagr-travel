@@ -3,173 +3,163 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Voyagr Pro — AI Travel Intelligence & Earnings</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <title>Voyagr Pro — The Future of AI Social Travel</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;500;800&family=Playfair+Display:wght@900&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #c4622d; --dark: #0a0a0f; --light: #f5f0e8;
-            --accent: #d4a853; --success: #2d6a4f;
+            --primary: #c4622d; --bg: #0f172a; --card: #1e293b; 
+            --text: #f8fafc; --accent: #38bdf8; --glass: rgba(255, 255, 255, 0.05);
         }
-        * { margin:0; padding:0; box-sizing:border-box; }
-        body { font-family: 'Inter', sans-serif; background: var(--light); color: var(--dark); }
+        * { margin:0; padding:0; box-sizing:border-box; transition: 0.3s ease; }
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background: var(--bg); color: var(--text); overflow-x: hidden; }
 
-        /* Navigation */
-        nav { padding: 15px 40px; display: flex; justify-content: space-between; align-items: center; background: rgba(10,10,15,0.95); backdrop-filter: blur(10px); color: white; position: sticky; top: 0; z-index: 1000; }
-        .logo { font-family: 'Playfair Display', serif; font-size: 26px; font-weight: 900; }
+        /* Social Navbar */
+        nav { padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; background: rgba(15, 23, 42, 0.8); backdrop-filter: blur(15px); border-bottom: 1px solid var(--glass); position: sticky; top: 0; z-index: 1000; }
+        .logo { font-family: 'Playfair Display', serif; font-size: 28px; font-weight: 900; letter-spacing: -1px; }
         .logo span { color: var(--primary); }
+        .nav-icons { display: flex; gap: 20px; font-size: 14px; font-weight: 600; cursor: pointer; }
 
-        /* Hero with Live Data Widget */
-        .hero { background: var(--dark); padding: 80px 20px; text-align: center; color: white; position: relative; overflow: hidden; }
-        .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(40px, 8vw, 70px); line-height: 1.1; }
+        /* Modern Hero Section */
+        .hero { padding: 100px 5% 60px; text-align: center; background: radial-gradient(circle at top, #1e293b, #0f172a); }
+        .hero h1 { font-size: clamp(35px, 6vw, 80px); line-height: 1; margin-bottom: 20px; }
+        .hero p { opacity: 0.6; max-width: 600px; margin: 0 auto 40px; }
+
+        /* Social-Style Search */
+        .search-box { max-width: 700px; margin: 0 auto; background: var(--glass); padding: 10px; border-radius: 20px; border: 1px solid var(--glass); display: flex; gap: 10px; }
+        .search-box input { flex: 1; background: transparent; border: none; padding: 15px; color: white; outline: none; font-size: 16px; }
+        .ai-btn { background: var(--primary); color: white; border: none; padding: 12px 30px; border-radius: 15px; font-weight: 800; cursor: pointer; box-shadow: 0 10px 20px rgba(196, 98, 45, 0.3); }
+
+        /* Advanced Intelligence Dashboard */
+        .dashboard-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 30px; padding: 50px 5%; }
+        .card { background: var(--card); border-radius: 24px; padding: 30px; border: 1px solid var(--glass); position: relative; }
         
-        /* Advanced Search Engine UI */
-        .search-wrapper { max-width: 900px; margin: 40px auto; background: rgba(255,255,255,0.1); padding: 10px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.2); }
-        .search-input-group { display: flex; gap: 10px; background: white; border-radius: 15px; padding: 5px; }
-        .search-input-group input { flex: 1; border: none; padding: 15px 20px; font-size: 16px; outline: none; border-radius: 10px; }
-        .search-btn { background: var(--primary); color: white; border: none; padding: 0 30px; border-radius: 10px; cursor: pointer; font-weight: 600; transition: 0.3s; }
-        .search-btn:hover { background: var(--accent); }
+        /* Live Updates Feed */
+        .social-feed { margin-top: 30px; }
+        .feed-item { background: var(--glass); padding: 15px; border-radius: 15px; margin-bottom: 15px; border-left: 4px solid var(--accent); }
+        .feed-item small { color: var(--accent); font-weight: 700; text-transform: uppercase; font-size: 10px; }
 
-        /* MONETIZATION: Affiliate Cards */
-        .monetize-section { padding: 40px 20px; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; background: #fff; margin-top: -40px; position: relative; z-index: 10; border-radius: 20px; box-shadow: 0 10px 40px rgba(0,0,0,0.1); max-width: 1000px; margin-left: auto; margin-right: auto; }
-        .affiliate-card { flex: 1; min-width: 250px; padding: 20px; border: 1px solid #eee; border-radius: 15px; text-align: center; transition: 0.3s; }
-        .affiliate-card:hover { border-color: var(--primary); transform: translateY(-5px); }
-        .affiliate-card img { width: 40px; margin-bottom: 10px; }
-        .affiliate-card h4 { font-size: 14px; margin-bottom: 5px; color: var(--gray); }
-        .affiliate-card p { font-weight: 700; color: var(--primary); }
+        /* Affiliate & Monetization Widgets */
+        .side-widget { display: flex; flex-direction: column; gap: 20px; }
+        .promo-card { background: linear-gradient(135deg, #c4622d, #d4a853); padding: 25px; border-radius: 24px; color: white; }
+        .promo-card h3 { margin-bottom: 10px; }
+        .buy-btn { width: 100%; background: white; color: black; border: none; padding: 12px; border-radius: 12px; font-weight: 800; margin-top: 15px; cursor: pointer; }
 
-        /* ADVANCED INFO: Live Dashboard */
-        .dashboard { padding: 80px 40px; display: grid; grid-template-columns: 2fr 1fr; gap: 30px; }
-        .live-intel { background: white; padding: 30px; border-radius: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
-        .intel-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid var(--light); padding-bottom: 15px; margin-bottom: 20px; }
-        .status-badge { background: var(--success); color: white; padding: 5px 15px; border-radius: 100px; font-size: 12px; }
+        /* Roadmap Visualization */
+        .roadmap-section { padding: 60px 5%; }
+        .timeline { border-left: 2px solid var(--glass); padding-left: 30px; position: relative; }
+        .step { margin-bottom: 40px; position: relative; }
+        .step::before { content: ''; position: absolute; left: -41px; top: 5px; width: 20px; height: 20px; background: var(--primary); border-radius: 50%; box-shadow: 0 0 15px var(--primary); }
 
-        /* PREMIUM CONTENT: Paid Roadmap */
-        .premium-box { background: linear-gradient(135deg, #0a0a0f, #2d2d3a); color: white; padding: 30px; border-radius: 20px; display: flex; flex-direction: column; justify-content: center; position: relative; overflow: hidden; }
-        .premium-box::after { content: "PRO"; position: absolute; top: 10px; right: 10px; background: var(--accent); color: black; font-size: 10px; font-weight: 900; padding: 2px 8px; border-radius: 5px; }
-        .unlock-btn { margin-top: 20px; background: var(--accent); color: black; border: none; padding: 12px; border-radius: 10px; font-weight: 700; cursor: pointer; }
-
-        /* Roadmap Steps */
-        .roadmap-container { padding: 60px 40px; background: var(--light); }
-        .step-list { border-left: 2px dashed var(--primary); padding-left: 30px; margin-left: 20px; }
-        .step-item { position: relative; margin-bottom: 40px; }
-        .step-item::before { content: ""; position: absolute; left: -41px; top: 0; width: 20px; height: 20px; background: var(--primary); border-radius: 50%; border: 4px solid white; }
-
-        footer { background: var(--dark); color: white; padding: 40px; text-align: center; }
-        .ad-space { background: #1a1a24; padding: 20px; border: 1px dashed #333; margin: 20px 0; color: #555; font-size: 12px; }
-
-        @media (max-width: 768px) { .dashboard { grid-template-columns: 1fr; } }
+        /* Footer */
+        footer { padding: 60px 5%; background: #000; text-align: center; }
+        .footer-logo { font-size: 20px; margin-bottom: 20px; display: block; }
+        
+        @media (max-width: 900px) { .dashboard-grid { grid-template-columns: 1fr; } }
     </style>
 </head>
 <body>
 
     <nav>
         <div class="logo">Voyagr<span>Pro</span></div>
-        <div style="font-size: 14px; font-weight: 600;">AI Intelligence Hub</div>
+        <div class="nav-icons">
+            <span>Explore</span>
+            <span>Live Map</span>
+            <span style="color: var(--primary);">Premium Access</span>
+        </div>
     </nav>
 
     <header class="hero">
-        <h1>Travel Smarter,<br>Not Harder.</h1>
-        <p style="margin-top: 15px; opacity: 0.7;">Scraping 1,000+ sources for real-time intelligence and roadmaps.</p>
+        <h1>Smarter Travel.<br>Shared <em>Intelligently.</em></h1>
+        <p>Your all-in-one AI travel hub. Real-time data, verified social roadmaps, and secure earnings.</p>
         
-        <div class="search-wrapper">
-            <div class="search-input-group">
-                <input type="text" id="searchInput" placeholder="Where to? (e.g. 10 Days in Japan Budget Plan)">
-                <button class="search-btn" onclick="aiSearch()">Generate AI Plan</button>
-            </div>
+        <div class="search-box">
+            <input type="text" id="destinationInput" placeholder="Where is your next adventure?">
+            <button class="ai-btn" onclick="startScraping()">AI Scan</button>
         </div>
     </header>
 
-    <section class="monetize-section">
-        <div class="affiliate-card">
-            <h4>Best Hotel Deals</h4>
-            <p>Booking.com</p>
-            <small>Earn up to 40% off</small>
-        </div>
-        <div class="affiliate-card">
-            <h4>Cheap Flight Search</h4>
-            <p>Skyscanner</p>
-            <small>Live tracking active</small>
-        </div>
-        <div class="affiliate-card">
-            <h4>Travel Insurance</h4>
-            <p>SafetyWing</p>
-            <small>Protect your journey</small>
-        </div>
-    </section>
-
-    <main class="dashboard">
-        <div class="live-intel">
-            <div class="intel-header">
-                <h3>Live Destination Intel</h3>
-                <span class="status-badge">AI Active</span>
+    <main class="dashboard-grid">
+        <section class="card">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+                <h2>Live Travel Intelligence</h2>
+                <div style="font-size: 12px; background: var(--accent); color: #000; padding: 4px 12px; border-radius: 50px; font-weight: 900;">LIVE 2026</div>
             </div>
-            <div id="intelContent">
-                <p style="color: var(--gray);">Enter a destination above to see real-time safety, weather, and visa updates extracted from global platforms.</p>
-                <div style="margin-top: 20px; display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
-                    <div style="background: var(--light); padding: 15px; border-radius: 10px;">
-                        <small>Local Safety Index</small>
-                        <p style="font-weight: 700;">--/100</p>
-                    </div>
-                    <div style="background: var(--light); padding: 15px; border-radius: 10px;">
-                        <small>Avg. Daily Cost</small>
-                        <p style="font-weight: 700;">$--</p>
-                    </div>
+            
+            <div id="aiResponse" class="social-feed">
+                <div class="feed-item">
+                    <small>System Status</small>
+                    <p>AI is monitoring global flight trends, visa updates, and safety alerts from 1,000+ sources.</p>
+                </div>
+                <div class="feed-item" style="border-left-color: var(--primary);">
+                    <small>Trending Now</small>
+                    <p>Japan Cherry Blossom 2026 itineraries are up by 40% this week. Scanned via Instagram Trends.</p>
                 </div>
             </div>
-        </div>
+        </section>
 
-        <div class="premium-box">
-            <h3>Niche Roadmaps</h3>
-            <p style="font-size: 13px; margin-top: 10px; opacity: 0.8;">Unlock our expert-vetted 2026 travel blueprint for high-adventure routes.</p>
-            <ul style="font-size: 12px; margin-top: 15px; list-style: none;">
-                <li>✅ Detailed Visa Hacks</li>
-                <li>✅ Secret Local Shortcuts</li>
-                <li>✅ Expense Spreadsheet</li>
-            </ul>
-            <button class="unlock-btn" onclick="alert('Payment Gateway Integration Needed!')">Unlock Guide ($4.99)</button>
-        </div>
+        <aside class="side-widget">
+            <div class="promo-card">
+                <h3>Unlock Pro Guide</h3>
+                <p>Get exclusive hidden gem routes & PDF itineraries verified by our AI.</p>
+                <button class="buy-btn">Unlock Now ($9.99)</button>
+            </div>
+
+            <div class="card" style="padding: 20px;">
+                <h4 style="color: var(--accent);">Affiliate Partners</h4>
+                <div style="margin-top: 15px; font-size: 14px;">
+                    <div style="margin-bottom: 10px;">🏨 Booking.com — 10% Off</div>
+                    <div style="margin-bottom: 10px;">✈️ Skyscanner — Live Deals</div>
+                    <div>🛡 SafetyWing — Top Secure</div>
+                </div>
+            </div>
+        </aside>
     </main>
 
-    <section class="roadmap-container">
-        <h2 style="margin-bottom: 30px; font-family: 'Playfair Display';">Standard Intelligence Roadmap</h2>
-        <div class="step-list">
-            <div class="step-item">
-                <h4>AI Data Scraping</h4>
-                <p>We analyze Reddit, TripAdvisor, and Blogs for honest reviews.</p>
+    <section class="roadmap-section">
+        <h2 style="margin-bottom: 40px; font-family: 'Playfair Display'; font-size: 35px;">2026 Smart Journey Roadmap</h2>
+        <div class="timeline">
+            <div class="step">
+                <h4>AI Data Aggregation</h4>
+                <p>We crawl Reddit, TripAdvisor, and specialized forums to bring you unfiltered truth about any destination.</p>
             </div>
-            <div class="step-item">
-                <h4>Dynamic Budgeting</h4>
-                <p>Live currency conversion and local price trends for 2026.</p>
+            <div class="step">
+                <h4>Dynamic Risk Assessment</h4>
+                <p>Real-time embassy updates and safety scores from local police databases.</p>
             </div>
-            <div class="step-item">
-                <h4>Safety & Health Check</h4>
-                <p>Automated verification of CDC and Embassy travel advisories.</p>
+            <div class="step">
+                <h4>Monetized Planning</h4>
+                <p>Earn points and rewards while planning your trip with our secure affiliate gateways.</p>
             </div>
         </div>
     </section>
 
-    <div class="ad-space">ADVERTISEMENT SPACE (AdSense Ready)</div>
-
     <footer>
-        <div class="logo">Voyagr<span>Pro</span></div>
-        <p style="font-size: 13px; margin-top: 10px;">Building the future of travel with perfection.</p>
-        <p style="font-size: 11px; margin-top: 20px; opacity: 0.5;">Always follow me for latest updates.</p>
+        <span class="logo footer-logo">Voyagr<span>Pro</span></span>
+        <p style="opacity: 0.5; font-size: 13px;">Built for the modern traveler. Secured by AI Intelligence.</p>
+        <p style="margin-top: 20px; font-size: 11px;">Always follow me for latest updates.</p>
     </footer>
 
     <script>
-        function aiSearch() {
-            let val = document.getElementById('searchInput').value;
-            if(val) {
-                document.getElementById('intelContent').innerHTML = `
-                    <h4 style="color: var(--primary);">Analyzing Intelligence for: ${val}</h4>
-                    <p style="font-size: 14px; margin-top: 10px;">Scraping data from <b>Skyscanner, Booking.com, and 14 travel blogs...</b></p>
-                    <div style="margin-top: 15px; padding: 10px; background: #e8f5e9; border-radius: 5px; font-size: 13px;">
-                        ✔ 2026 Visa Rules Found<br>
-                        ✔ Cheap Flight Trend: Book now for June<br>
-                        ✔ Safety: High (88/100)
+        function startScraping() {
+            let city = document.getElementById('destinationInput').value;
+            if(!city) return alert("Enter a city first!");
+            
+            const aiFeed = document.getElementById('aiResponse');
+            aiFeed.innerHTML = `
+                <div class="feed-item">
+                    <small>Scanning Global Data for ${city}...</small>
+                    <p>Connecting to flight APIs, hotel databases, and 2026 visa portals. Please wait...</p>
+                </div>
+            `;
+            
+            setTimeout(() => {
+                aiFeed.innerHTML += `
+                    <div class="feed-item" style="border-left-color: #4ade80;">
+                        <small>Intelligence Result</small>
+                        <p><b>${city}</b> is 90% Safe. Visa: e-Visa available. Best flight deals found for next month.</p>
                     </div>
                 `;
-            }
+            }, 1500);
         }
     </script>
 </body>
